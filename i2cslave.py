@@ -295,7 +295,7 @@ class I2CSlave():
 		while (self.__regRead(__IC_RAW_INTR_STAT, 0x20) != 0) and (timeout > 0):
 			timeout-= 1
 			sleep_ms(1)
-		return not self.__regRead(__IC_RAW_INTR_STAT, 0x20)
+		return self.__regRead(__IC_RAW_INTR_STAT, 0x20)
 	# end def
 
 		# Wait until data arrives
