@@ -30,3 +30,24 @@ The development is based on the 2023 RP2040 datashet
 
 Is under MIT license so please feel free to contribute and try not to bug me about glitches, errors, bugs, and that kind of nasty stuff. PRs are more than welcome.
 
+# Testing
+The driver can be tested *standalone* with the following wiring:
+- Connect GPIO0 to GPIO2
+- Connect GPIO1 to GPIO3
+- Connect VBUS to either GPIO0 or GPIO2 via a 18K resistor
+- Connect VBUS to either GPIO1 or GPIO3 via a 18K resistor
+
+Then plug to USB and enjoy on `/dev/ttyACM0`.
+
+Any resistor of 10K or greater will do.
+18K is the recommended value, but you can use any other one you have at hand.
+These are necessary because, unlike the Raspberry Pi, the Pico doesn't have built-in pull-up resistors.
+
+**It won't work without pull-up resistors**
+
+The script will put both cores to work.
+Core0 manages the slave while Core1 controls the master.
+1. The Master generates two random integers that are sent to the Slave.
+2. The Slave adds up the numbers.
+3. The Master reads the result from the Slave.
+4. Rince and repeat... forever.

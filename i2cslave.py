@@ -13,6 +13,11 @@
 # Due to Python limitations it does NOT support interrupts or IRQs.
 # The use of DMA is future work.
 #
+# Stand-Alone testing:
+# Connect GPIO0 to GPIO2
+# Connect GPIO1 to GPIO3
+# Connect VCC to both, GPIO0 and GPIO1 via a 10K resistor
+#
 # ## ############################################################
 import machine
 from utime import sleep_ms, sleep_us
